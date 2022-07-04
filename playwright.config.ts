@@ -59,6 +59,7 @@ const config: PlaywrightTestConfig = {
         ...devices[label],
         contextOptions: {
           recordHar: {
+            omitContent: true,
             path: `${OUTPUT_DIR}/${name}_${nanoid()}.har`
           }
         }

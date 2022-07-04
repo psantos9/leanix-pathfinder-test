@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "test:unit": "jest",
-    "test:e2e": "playwright test --repeat-each=10"
+    "test:e2e": "playwright test --repeat-each=10 --timeout 60000",
+    "test": "npm run test:e2e"
   },
   "keywords": [],
   "author": "",

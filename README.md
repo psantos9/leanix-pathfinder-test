@@ -17,7 +17,6 @@ leanix-pathfinder-test requires the following to run:
 git clone git@github.com:psantos9/leanix-pathfinder-test.git
 cd leanix-pathfinder-test
 npm install
-npx playwright install
 ```
 
 ## Usage

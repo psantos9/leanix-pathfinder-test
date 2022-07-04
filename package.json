@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "postinstall" : "npx playwright install",
     "test:unit": "jest",
     "test:e2e": "playwright test --repeat-each=10 --timeout 60000",
     "test": "npm run test:e2e"

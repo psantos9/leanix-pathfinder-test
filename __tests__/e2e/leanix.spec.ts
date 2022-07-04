@@ -11,9 +11,11 @@ const {
 let launchUrl: string | null = null
 
 test.beforeAll(async () => {
-  const accessToken = await getAccessToken({ host, apitoken })
-  launchUrl = getLaunchUrl(accessToken.accessToken)
-  // context = await browser.newContext({ recordHar: { path: 'leanix.har', content: 'omit' } })
+  // ensure that LEANIX_HOST and LEANIX_APITOKEN are defined in the '.env' file
+  expect(host).not.toBeFalsy()
+  expect(apitoken).not.toBeFalsy()
+  launchUrl = getLaunchUrl((await getAccessToken({ host, apitoken })).accessToken)
+  expect(launchUrl).not.toBeFalsy()
 })
 
 test.afterAll(() => {

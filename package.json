@@ -5,7 +5,7 @@
   "scripts": {
     "postinstall" : "npx playwright install",
     "test:unit": "jest",
-    "test:e2e": "playwright test --repeat-each=10 --timeout 60000",
+    "test:e2e": "playwright test --repeat-each=10 --timeout 60000 --reporter=line",
     "test": "npm run test:e2e"
   },
   "keywords": [],

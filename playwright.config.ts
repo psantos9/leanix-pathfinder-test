@@ -62,6 +62,9 @@ const config: PlaywrightTestConfig = {
             omitContent: true,
             path: `${OUTPUT_DIR}/${name}_${nanoid()}.har`
           }
+        },
+        launchOptions: {
+          devtools: true
         }
       }
     })),

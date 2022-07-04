@@ -22,8 +22,8 @@ npm install
 ## Usage
 1. Add a ".env" file to the project root folder with the following content:
 
-        LEANIX_HOST=<your workspace host here, e.g. us.leanix.net>
-        LEANIX_APITOKEN=<your api token here>
+        LEANIX_HOST=your workspace host here, e.g. us.leanix.net
+        LEANIX_APITOKEN=your api token here
 
 2. Run the following command:
 

@@ -30,9 +30,9 @@ npm install
         npm run test
 
 
-3. Each test run will generate 10 automated sign in / sign out cycles that will be recorded indidividually and saved as a Http archive (HAR) file. These HAR files are stored inside the ```.output``` folder.
+3. Each test run will record loading times for 10 automated LeanIX EAM sign in / sign out cycles, perform latency test measurements for different Azure Availability Regions, and compute overall statistics. The test output will be saved as ```.output\test_result.zip```.
 
-4. Compress the contents of the ```.output``` folder into a zip file and send it to your LeanIX CSE for further analysis.
+4. Send the ```.output\test_result.zip``` file to your LeanIX CSE for further analysis.
 
 [node]: https://nodejs.org/
 [npm]: https://www.npmjs.com/

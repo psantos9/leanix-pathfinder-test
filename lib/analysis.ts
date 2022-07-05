@@ -4,7 +4,6 @@ import { mean, std } from 'mathjs'
 import AdmZip from 'adm-zip'
 import { HAR } from './types'
 import { AzureLatencySnapshot } from './latency'
-import { nanoid } from './nanoid'
 import { JwtClaims } from './leanix'
 
 export interface TestSummary {
@@ -15,6 +14,11 @@ export interface TestSummary {
   attempts: number
   timeouts: number
   timeoutHARs: string[]
+  /*
+  *  The DOMContentLoaded event is fired when the document has been completely loaded and parsed, without waiting
+  *  for stylesheets, images, and subframes to finish loading (the load event can be used to detect a fully-loaded
+  *  page).
+  */
   onContentLoadStats: { mean: number, std: number, samples: number[] }
   onLoadStats: { mean: number, std: number, samples: number[] }
   latencySnapshot: AzureLatencySnapshot[]
@@ -64,17 +68,17 @@ export const processTestFiles = (outputDir: string): TestSummary => {
     attempts: loadingTimes.length,
     timeouts: timeoutHARs.length,
     timeoutHARs,
-    onLoadStats: {
-      mean: Math.round(mean(onLoad)),
-      // @ts-ignore
-      std: Math.round(std(onLoad)),
-      samples: onLoad
-    },
     onContentLoadStats: {
       mean: Math.round(mean(onContentLoad)),
       // @ts-ignore
       std: Math.round(std(onContentLoad)),
       samples: onContentLoad
+    },
+    onLoadStats: {
+      mean: Math.round(mean(onLoad)),
+      // @ts-ignore
+      std: Math.round(std(onLoad)),
+      samples: onLoad
     },
     latencySnapshot: snapshot
   }
@@ -83,7 +87,7 @@ export const processTestFiles = (outputDir: string): TestSummary => {
   files
     .filter(file => file.split('.')[1] === 'har')
     .forEach(file => zip.addLocalFile(join(outputDir, file)))
-  zip.writeZip(join(outputDir, `test_result_${nanoid()}.zip`))
+  zip.writeZip(join(outputDir, 'test_result.zip'))
   files.forEach(file => rmSync(join(outputDir, file)))
   return summary
 }

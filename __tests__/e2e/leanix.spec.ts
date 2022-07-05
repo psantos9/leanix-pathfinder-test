@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test'
 import { join } from 'path'
-import { writeFileSync } from 'fs'
+import { writeFileSync, existsSync, mkdirSync } from 'fs'
 import { getAccessToken, getAccessTokenClaims, getLaunchUrl } from '../../lib/leanix'
 
 // !!! do not forget to add to the root project folder a ".env" file
@@ -16,6 +16,7 @@ let launchUrl: string | null = null
 
 test.beforeAll(async () => {
   // create output dir if not exists
+  if (!existsSync(outputDir)) mkdirSync(outputDir)
   // ensure that LEANIX_HOST and LEANIX_APITOKEN are defined in the '.env' file
   expect(host).not.toBeFalsy()
   expect(apitoken).not.toBeFalsy()

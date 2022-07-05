@@ -1,9 +1,16 @@
+
+import { join } from 'path'
+import { existsSync, mkdirSync } from 'fs'
 import { getAccessToken, getLaunchUrl, getAccessTokenClaims, LeanIXCredentials } from '../../lib/leanix'
 
 const { LEANIX_HOST: host = '', LEANIX_APITOKEN: apitoken = '' } = process.env
 const credentials: LeanIXCredentials = { host, apitoken }
+const outputDir = join(process.cwd(), '.output')
 
 describe('LeanIX helpers', () => {
+  beforeAll(() => {
+    if (!existsSync(outputDir)) mkdirSync(outputDir)
+  })
   test('allow to get an access token from credentials', async () => {
     expect(credentials.host).not.toBeFalsy()
     expect(credentials.apitoken).not.toBeFalsy()

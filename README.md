@@ -30,7 +30,7 @@ npm install
         npm run test
 
 
-3. Each test run will record loading times for 10 automated LeanIX EAM sign in / sign out cycles, perform latency test measurements for different Azure Availability Regions, and compute overall statistics. The test output will be saved as ```.output\test_result.zip```.
+3. Each test run will record loading times for 10 automated LeanIX EAM sign in cycles, perform latency test measurements for different Azure Availability Regions, and compute overall statistics. The test output will be saved as ```.output\test_result.zip```.
 
 4. Send the ```.output\test_result.zip``` file to your LeanIX CSE for further analysis.
 

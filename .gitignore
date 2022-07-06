@@ -4,5 +4,6 @@ node_modules/
 /playwright/.cache/
 .env
 .output
+.dataset
 *.har
 .DS_Store

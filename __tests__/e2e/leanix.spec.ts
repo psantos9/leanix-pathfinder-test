@@ -7,7 +7,8 @@ import { getAccessToken, getAccessTokenClaims, getLaunchUrl } from '../../lib/le
 // with LEANIX_HOST and LEANIX_APITOKEN variables
 const {
   LEANIX_HOST: host = '',
-  LEANIX_APITOKEN: apitoken = ''
+  LEANIX_APITOKEN: apitoken = '',
+  HTTP_PROXY_URL: proxyURL = ''
 } = process.env
 
 const outputDir = join(process.cwd(), '.output')
@@ -20,7 +21,7 @@ test.beforeAll(async () => {
   // ensure that LEANIX_HOST and LEANIX_APITOKEN are defined in the '.env' file
   expect(host).not.toBeFalsy()
   expect(apitoken).not.toBeFalsy()
-  const accessToken = await getAccessToken({ host, apitoken })
+  const accessToken = await getAccessToken({ host, apitoken, proxyURL })
   const claims = getAccessTokenClaims(accessToken)
   writeFileSync(join(outputDir, 'token_claims.json'), JSON.stringify(claims, null, 2))
   launchUrl = getLaunchUrl(accessToken.accessToken)

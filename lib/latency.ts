@@ -1,7 +1,10 @@
 // ref: https://www.azurespeed.com/Azure/Latency
 import Bottleneck from 'bottleneck'
 import fetch from 'node-fetch'
+import createHttpsProxyAgent from 'https-proxy-agent'
 import { std } from 'mathjs'
+
+const { HTTP_PROXY_URL: proxyUrl = '' } = process.env
 
 export enum AzureRegion {
   ASIA_PACIFIC = 'Asia Pacific',
@@ -113,7 +116,10 @@ const getBlobUrl = (availabilityZone: AzureAvailabilityZone) => `https://${avail
 
 const measureRequestLatency = (availabilityZone: AzureAvailabilityZone) => {
   const t0 = performance.now()
-  return fetch(getBlobUrl(availabilityZone))
+  const options = {
+    agent: proxyUrl ? createHttpsProxyAgent(proxyUrl) : undefined
+  }
+  return fetch(getBlobUrl(availabilityZone), options)
     .then(async res => {
       if (res.ok && res.status) {
         const latency = performance.now() - t0

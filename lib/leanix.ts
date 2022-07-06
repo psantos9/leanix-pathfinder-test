@@ -42,7 +42,7 @@ export const getAccessToken = async (credentials: LeanIXCredentials): Promise<Ac
     Authorization: `Basic ${Buffer.from('apitoken:' + credentials.apitoken).toString('base64')}`
   }
   const options: RequestInit = { method: 'post', headers }
-  if (credentials.proxyURL !== undefined) options.agent = createHttpsProxyAgent(credentials.proxyURL)
+  if (credentials.proxyURL) options.agent = createHttpsProxyAgent(credentials.proxyURL)
   const accessToken: AccessToken = await fetch(uri, options)
     .then(async res => {
       const content = await res[res.headers.get('content-type') === 'application/json' ? 'json' : 'text']()

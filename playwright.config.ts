@@ -57,6 +57,9 @@ const config: PlaywrightTestConfig = {
       name,
       use: {
         ...devices[label],
+        proxy: process.env.HTTP_PROXY_URL
+          ? { server: process.env.HTTP_PROXY_URL }
+          : undefined,
         // proxy: { server: '', username: '', password: '' },
         contextOptions: {
           recordHar: {

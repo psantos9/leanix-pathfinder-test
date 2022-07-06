@@ -24,6 +24,7 @@ npm install
 
         LEANIX_HOST=your workspace host here, e.g. us.leanix.net
         LEANIX_APITOKEN=your api token here
+        HTTP_PROXY_URL=add your proxy url, if required
 
 2. Run the following command:
 

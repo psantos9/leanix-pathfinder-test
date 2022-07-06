@@ -3,8 +3,13 @@ import { join } from 'path'
 import { existsSync, mkdirSync } from 'fs'
 import { getAccessToken, getLaunchUrl, getAccessTokenClaims, LeanIXCredentials } from '../../lib/leanix'
 
-const { LEANIX_HOST: host = '', LEANIX_APITOKEN: apitoken = '' } = process.env
-const credentials: LeanIXCredentials = { host, apitoken }
+const {
+  LEANIX_HOST: host = '',
+  LEANIX_APITOKEN: apitoken = '',
+  HTTP_PROXY_URL: proxyURL = ''
+} = process.env
+
+const credentials: LeanIXCredentials = { host, apitoken, proxyURL }
 const outputDir = join(process.cwd(), '.output')
 
 describe('LeanIX helpers', () => {

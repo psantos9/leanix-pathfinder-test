@@ -57,6 +57,7 @@ const config: PlaywrightTestConfig = {
       name,
       use: {
         ...devices[label],
+        // proxy: { server: '', username: '', password: '' },
         contextOptions: {
           recordHar: {
             omitContent: true,

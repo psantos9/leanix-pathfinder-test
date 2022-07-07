@@ -34,6 +34,7 @@
   "dependencies": {
     "adm-zip": "^0.5.9",
     "bottleneck": "^2.19.5",
+    "get-random-values": "^2.0.0",
     "https-proxy-agent": "^5.0.1",
     "json2csv": "^5.0.7",
     "jwt-decode": "^3.1.2",

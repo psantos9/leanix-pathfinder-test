@@ -7,3 +7,4 @@ node_modules/
 .dataset
 *.har
 .DS_Store
+NOTES.md
